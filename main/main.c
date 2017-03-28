@@ -82,8 +82,8 @@ static void initialise_wifi(void)
     ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
     wifi_config_t sta_config = {
         .sta = {
-            .ssid = "Nat",
-            .password = "123456789",
+            .ssid = "lukasz",
+            .password = "tajne123",
             .bssid_set = false
         }
     };
