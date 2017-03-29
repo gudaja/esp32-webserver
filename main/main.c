@@ -18,7 +18,7 @@ const int CONNECTED_BIT = BIT0;
 
 #include "cJSON.h"
 
-#define LED_BUILTIN 16
+#define LED_BUILTIN 2
 #define delay(ms) (vTaskDelay(ms/portTICK_RATE_MS))
 char* json_unformatted;
 
@@ -36,6 +36,8 @@ const static char http_index_hml[] = "<!DOCTYPE html>"
       "</head>\n"
       "<body>\n"
       "<h1>Hello World, from ESP32!</h1>\n"
+	  "<form action=\"/h\" method=\"get\"><input type=\"submit\" value=\"zgas\"  /></form>"
+	  "<form action=\"/l\" method=\"get\"><input type=\"submit\" value=\"zapal\" name=\"Submit\" id=\"frm1_submit\" /></form>"
       "</body>\n"
       "</html>\n";
 
@@ -220,7 +222,7 @@ int app_main(void)
 
     /* Set the GPIO as a push/pull output */
     gpio_set_direction(LED_BUILTIN, GPIO_MODE_OUTPUT);
-    xTaskCreate(&generate_json, "json", 2048, NULL, 5, NULL);
+//    xTaskCreate(&generate_json, "json", 2048, NULL, 5, NULL);
     xTaskCreate(&http_server, "http_server", 2048, NULL, 5, NULL);
     return 0;
 }
